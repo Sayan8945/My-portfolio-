@@ -1,3 +1,4 @@
+import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="c-space pt-7 pb-3 border-t border-black-300 flex justify-between items-center flex-wrap gap-5">
@@ -8,18 +9,20 @@ const Footer = () => {
       </div>
 
       <div className="flex gap-3">
-        <div className="social-icon">
+        <a className="social-icon" href="https://github.com/Sayan8945">
           <img src="/assets/github.svg" alt="github" className="w-1/2 h-1/2" />
-        </div>
+        </a>
         <div className="social-icon">
-          <img src="/assets/twitter.svg" alt="twitter" className="w-1/2 h-1/2" />
+          <a href="https://www.linkedin.com/in/sayansarkar8945/">
+          <span><FaLinkedin className="size-6 bg-white"/></span>
+          </a>
         </div>
-        <div className="social-icon">
+        <a className="social-icon" href="https://www.instagram.com/itz_error404__?igsh=MWVsM29pYXdnZ2p5MA==">
           <img src="/assets/instagram.svg" alt="instagram" className="w-1/2 h-1/2" />
-        </div>
+        </a>
       </div>
 
-      <p className="text-white-500">© 2024 Adrian Hajdin. All rights reserved.</p>
+      <p className="text-white-500">© 2025 Sayan Sarkar. All rights reserved.</p>
     </footer>
   );
 };
