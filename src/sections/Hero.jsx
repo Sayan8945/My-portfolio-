@@ -11,6 +11,7 @@ import Button from '../components/Button.jsx';
 import Target from '../components/Target.jsx';
 import CanvasLoader from '../components/Loading.jsx';
 import HeroCamera from '../components/HeroCamera.jsx';
+import ErrorBoundary from '../components/ErrorBoundary.jsx';
 import { calculateSizes } from '../constants/index.js';
 import { HackerRoom } from '../components/HackerRoom.jsx';
 
@@ -43,7 +44,9 @@ const Hero = () => {
             </HeroCamera>
 
             <group>
-              <Target position={sizes.targetPosition} />
+              <ErrorBoundary>
+                <Target position={sizes.targetPosition} />
+              </ErrorBoundary>
               <ReactLogo position={sizes.reactLogoPosition} />
               <Rings position={sizes.ringPosition} />
               <Cube position={sizes.cubePosition} />
