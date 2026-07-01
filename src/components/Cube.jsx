@@ -29,7 +29,7 @@ const Cube = ({ ...props }) => {
           each: 0.15,
         },
       });
-  }, [hovered]);
+  });
 
   return (
     <Float floatIntensity={2}>
@@ -40,8 +40,7 @@ const Cube = ({ ...props }) => {
           receiveShadow
           geometry={nodes.Cube.geometry}
           material={nodes.Cube.material}
-          onPointerEnter={() => setHovered(true)}
-          onPointerLeave={() => setHovered(false)}>
+          onPointerEnter={() => setHovered(true)}>
           <meshMatcapMaterial matcap={texture} toneMapped={false} />
         </mesh>
       </group>
