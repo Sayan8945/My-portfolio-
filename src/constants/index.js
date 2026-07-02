@@ -11,11 +11,16 @@ export const navLinks = [
   },
   {
     id: 3,
+    name: 'Skills',
+    href: '#skills',
+  },
+  {
+    id: 4,
     name: 'Projects',
     href: '#projects',
   },
   {
-    id: 4,
+    id: 5,
     name: 'Contact',
     href: '#contact',
   },
@@ -242,5 +247,46 @@ export const workExperiences = [
     title: "Notion helps me keep my projects organized. I use it for project management, task tracking, and as a central hub for documentation, ensuring that everything from design notes to.",
     icon: '/assets/notion.svg',
     animation: 'salute',
+  },
+];
+
+export const mySkills = [
+  {
+    id: 1,
+    title: 'Languages',
+    accent: '#f7df1e',
+    skills: [
+      { name: 'Java' },
+      { name: 'C' },
+      { name: 'Python' },
+      { name: 'JavaScript', icon: '/assets/javascript.png' },
+      { name: 'TypeScript', icon: '/assets/typescript.png' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Web Development',
+    accent: '#61dafb',
+    skills: [
+      { name: 'React.js', icon: '/assets/react.svg' },
+      { name: 'Node.js' },
+      { name: 'Express.js', icon: '/assets/express.png' },
+      { name: 'MongoDB', icon: '/assets/mongodb.png' },
+      { name: 'Tailwind CSS', icon: '/assets/tailwindcss.png' },
+      { name: 'Bootstrap', icon: '/assets/bootstrap.png' },
+      { name: 'EJS', icon: '/assets/ejs.png' },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Core & Tools',
+    accent: '#4ade80',
+    skills: [
+      { name: 'Data Structures & Algorithms' },
+      { name: 'Data Science' },
+      { name: 'Git & GitHub', icon: '/assets/github.svg' },
+      { name: 'AWS', icon: '/assets/aws.png' },
+      { name: 'Figma', icon: '/assets/figma.svg' },
+    ],
   },
 ];
