@@ -1,76 +1,68 @@
 import { useState, useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
-
-import Button from '../components/Button.jsx';
+import ResumeModal from '../components/ResumeModal.jsx';
 
 const About = () => {
-  const [hasCopied, setHasCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(' adrian@jsmastery.pro');
-    setHasCopied(true);
-
-    setTimeout(() => {
-      setHasCopied(false);
-    }, 2000);
-  };
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   const globeRef = useRef();
 
   useEffect(() => {
     if (globeRef.current) {
-      // Target lat/lng
-      const lat = 26.3452;
-      const lng = 89.4482;
-
-      // Fly camera to the point with zoom-in
-      globeRef.current.pointOfView(
-        { lat, lng, altitude: 0.8 }, // lower altitude = more zoom
-        3000, // duration ms
-      );
+      globeRef.current.pointOfView({ lat: 26.3452, lng: 89.4482, altitude: 0.8 }, 3000);
     }
   }, []);
 
   return (
     <section className="c-space my-20" id="about">
+      <ResumeModal isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
+
+        {/* ---------- Bio ---------- */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
-            <img src="assets/profile.jpg" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
-
+            <img src="assets/profile.jpeg" alt="Sayan Sarkar" className="w-full sm:h-[276px] h-fit object-contain" />
             <div>
-              <p className="grid-headtext">Hi, I’m &nbsp;Sayan Sarkar</p>
+              <p className="grid-headtext">Hi, I&apos;m Sayan Sarkar</p>
               <p className="grid-subtext">
-                A 3rd-year Electronics and Communication Engineering student at Cooch Behar Government Engineering
-                College. Alongside my core engineering studies, I’m deeply passionate about coding, problem-solving, and
-                exploring new technologies.
-                <a
-                  className="flex items-center gap-2 cursor-pointer text-yellow-500 py-4"
-                  href="https://www.canva.com/design/DAGSmq_UtBs/CkEv_V5DlkIK4oyTKcmvJw/edit?utm_content=DAGSmq_UtBs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
-                  <p>View My Resume</p>
-                  <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
-                </a>
+                4th-year Electronics &amp; Communication Engineering student at Coochbehar Government Engineering
+                College (CGEC, 2023–2027). Full Stack MERN &amp; Next.js Developer with a solid foundation in Java, C,
+                and Data Structures &amp; Algorithms — passionate about writing clean, efficient code and solving
+                complex algorithmic problems.
               </p>
+              <button
+                onClick={() => setResumeOpen(true)}
+                className="flex items-center gap-2 cursor-pointer text-yellow-500 py-4 hover:text-yellow-300 transition-colors">
+                <p>View My Resume</p>
+                <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
+              </button>
             </div>
           </div>
         </div>
 
+        {/* ---------- Tech Stack ---------- */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
-            <img src="assets/techStack.jpg" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
-
+            <img src="assets/techStack.jpeg" alt="Tech Stack" className="w-full sm:h-[276px] h-fit object-contain" />
             <div>
               <p className="grid-headtext">Tech Stack</p>
               <p className="grid-subtext">
-                Proficient in a diverse range of technologies including Java, C, and Python for core programming; MERN
-                stack (MongoDB, Express, React, Node.js) for full-stack web development; Data Structures & Algorithms
-                (DSA) for problem-solving and optimization; and Data Science for insights, analytics, and AI-driven
-                solutions.
+                <strong className="text-white">Languages:</strong> C, Java, JavaScript, TypeScript, Arduino
+                <br />
+                <strong className="text-white">Frontend:</strong> React.js, Next.js (App Router), Tailwind CSS, Framer
+                Motion, Bootstrap
+                <br />
+                <strong className="text-white">Backend:</strong> Node.js, Express.js, REST APIs, Firebase
+                <br />
+                <strong className="text-white">Databases:</strong> MongoDB, SQL
+                <br />
+                <strong className="text-white">DevOps:</strong> Git, GitHub, Docker, Vercel, Netlify, Render, AWS
               </p>
             </div>
           </div>
         </div>
 
+        {/* ---------- Globe / Location ---------- */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
@@ -83,7 +75,7 @@ const About = () => {
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
                 labelsData={[
-                  { lat: 26.3452, lng: 89.4482, text: 'Coochbehar, West Bengal', color: 'white', focus, size: 1.75 },
+                  { lat: 26.3452, lng: 89.4482, text: 'Coochbehar, West Bengal', color: 'white', size: 1.75 },
                 ]}
                 labelSize={(d) => d.size}
                 labelColor={(d) => d.color}
@@ -91,51 +83,55 @@ const About = () => {
               />
             </div>
             <div>
-              <p className="grid-headtext">I&apos;m based in Coochbehar, West Bengal and open to work worldwide</p>
+              <p className="grid-headtext">Based in Coochbehar, West Bengal — open to work worldwide</p>
               <p className="grid-subtext">
-                I’m comfortable coordinating across different cities and flexible with changing locations as needed.
+                Comfortable with remote collaboration across cities and flexible with relocation as needed.
               </p>
-              {/* <Button name="Contact Me" isBeam containerClass="w-full mt-10" /> */}
             </div>
           </div>
         </div>
 
+        {/* ---------- Passion for Coding ---------- */}
         <div className="xl:col-span-2 xl:row-span-2">
           <div className="grid-container">
-            <img src="assets/typingKeyboard.webp" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain" />
-
+            <img src="assets/typingKeyboard.webp" alt="Coding" className="w-full sm:h-[266px] h-fit object-contain" />
             <div>
               <p className="grid-headtext">My Passion for Coding</p>
               <p className="grid-subtext">
-                I love solving problems and building things through code. Programming isn&apos;t just my
-                profession—it&apos;s my passion. I enjoy exploring new technologies, and enhancing my skills.
+                I love solving problems and building things through code. Solved 100+ DSA problems on LeetCode. Strong
+                grasp of OOP principles, system design fundamentals, and modern full-stack tooling. Programming
+                isn&apos;t just my profession — it&apos;s my passion.
               </p>
             </div>
           </div>
         </div>
 
+        {/* ---------- Tech-O-Nicks ---------- */}
         <div className="xl:col-span-1 xl:row-span-3">
           <div className="grid-container">
             <img
               src="assets/techonicks.png"
-              alt="grid-4"
+              alt="Tech-O-Nicks"
               className="w-full md:h-[326px] sm:h-[276px] h-fit object-cover sm:object-top"
             />
             <div>
-              <p className="grid-headtext">Tech-O-Nicks Core member</p>
+              <p className="grid-headtext">Core Member — Tech-O-Nicks</p>
               <p className="grid-subtext">
-                Tech club Tech O Nicks offers a plethora of activities and events designed to ignite the passion for
-                technology among our members. <br /> <br />
+                Core Team Member of Tech-O-Nicks, the official tech club of Coochbehar Government Engineering College.
+                Also Co-lead of CGEC Doubthub — a tech platform designed to enhance students&apos; learning experience.
               </p>
               <a
-                className="flex items-center gap-2 cursor-pointer text-yellow-500"
-                href="https://techonicks.vercel.app/">
-                <p>Tech-o-Nicks Site</p>
+                className="flex items-center gap-2 cursor-pointer text-yellow-500 mt-2"
+                href="https://techonicks.vercel.app/"
+                target="_blank"
+                rel="noreferrer">
+                <p>Tech-O-Nicks Site</p>
                 <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
               </a>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

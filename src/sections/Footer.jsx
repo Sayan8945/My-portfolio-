@@ -10,7 +10,7 @@ const Footer = () => {
 
       <div className="flex gap-3">
         <a className="social-icon" href="https://github.com/Sayan8945">
-          <img src="/assets/github.svg" alt="github" className="w-1/2 h-1/2" />
+          <img src="/assets/logos/github.svg" alt="github" className="w-1/2 h-1/2" />
         </a>
         <div className="social-icon">
           <a href="https://www.linkedin.com/in/sayansarkar8945/">
@@ -18,7 +18,7 @@ const Footer = () => {
           </a>
         </div>
         <a className="social-icon" href="https://www.instagram.com/itz_error404__?igsh=MWVsM29pYXdnZ2p5MA==">
-          <img src="/assets/instagram.svg" alt="instagram" className="w-1/2 h-1/2" />
+          <img src="/assets/logos/instagram.svg" alt="instagram" className="w-1/2 h-1/2" />
         </a>
       </div>
 
