@@ -14,7 +14,7 @@ const Hero = () => {
         <p className="sm:text-3xl text-xl font-medium text-white text-center font-generalsans  z-10">
           Hi, I am Sayan <span className="waving-hand">👋</span>
         </p>
-        <p className="hero_tag text-gray_gradient">Full Stack Developer & ECE Engineer</p>
+        <p className="hero_tag text-gray_gradient">Building the Web. Mastering the Algorithm.</p>
       </div>
 
       <div className="w-full h-full absolute inset-0">

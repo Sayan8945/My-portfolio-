@@ -76,32 +76,11 @@ export const mySkills = [
 
 export const myProjects = [
   {
-    title: 'Stayan — Tourism & Accommodation Platform',
-    desc: 'A full-stack tourism platform inspired by Airbnb for discovering and booking unique accommodations and experiences worldwide. Connect with local hosts and unlock unforgettable travel adventures.',
-    subdesc:
-      'Built with the MERN stack (MongoDB, Express, React, Node.js) featuring real-time search, host dashboards, and full booking management.',
-    href: 'https://github.com/Sayan8945',
-    texture: '/textures/project/project1.mp4',
-    logo: '/assets/logos/project-logo1.png',
-    logoStyle: {
-      backgroundColor: '#2A1816',
-      border: '0.2px solid #36201D',
-      boxShadow: '0px 0px 60px 0px #AA3C304D',
-    },
-    spotlight: '/assets/spotlight1.png',
-    tags: [
-      { id: 1, name: 'React.js',    path: '/assets/logos/react.svg'      },
-      { id: 2, name: 'TailwindCSS', path: '/assets/logos/tailwindcss.png'},
-      { id: 3, name: 'Node.js',     path: '/assets/logos/express.png'    },
-      { id: 4, name: 'MongoDB',     path: '/assets/logos/mongodb.png'    },
-    ],
-  },
-  {
     title: 'MediBloom — Mental Health Platform',
     desc: 'Mental health platform featuring AI-powered chatbots for emotional support, mood tracking, and real-time self-assessment tools, committed to privacy-first mental wellness.',
     subdesc:
       'Built with React, Node.js, Express, and MongoDB, integrating advanced AI models to deliver responsive user experiences and scalable solutions.',
-    href: 'https://github.com/Sayan8945',
+    href: 'https://mental-health-site-mocha.vercel.app/',
     texture: '/textures/project/project2.mp4',
     logo: '/assets/logos/project-logo2.png',
     logoStyle: {
@@ -111,20 +90,22 @@ export const myProjects = [
     },
     spotlight: '/assets/spotlight2.png',
     tags: [
-      { id: 1, name: 'React.js', path: '/assets/logos/react.svg'   },
-      { id: 2, name: 'Node.js',  path: '/assets/logos/express.png' },
-      { id: 3, name: 'MongoDB',  path: '/assets/logos/mongodb.png' },
-      { id: 4, name: 'TypeScript', path: '/assets/logos/typescript.png' },
+      { id: 1, name: 'React.js',    path: '/assets/logos/react.svg'   },
+      { id: 2, name: 'Node.js',     path: '/assets/logos/nodejs.svg'  },
+      { id: 3, name: 'MongoDB',     path: '/assets/logos/mongodb.png' },
+      { id: 4, name: 'Python',      path: '/assets/logos/python.svg'  },
+      { id: 5, name: 'AI / OpenAI', path: '/assets/logos/openai.svg'  },
     ],
   },
+  
   {
     title: 'Package Tracker & Mover Site',
     desc: 'A full-stack logistics and package tracking platform with real-time shipment status tracking, mover service booking, admin dashboards, and JWT authentication.',
     subdesc:
       'Built with Next.js (App Router) on the frontend and Node.js/Express backend. MongoDB for persistence. Deployed on Vercel with REST API backend on Render.',
-    href: 'https://github.com/Sayan8945',
+    href: 'https://trackers-and-packers-frontend-gamma.vercel.app/',
     texture: '/textures/project/project3.mp4',
-    logo: '/assets/logos/project-logo3.png',
+    logo: '/assets/logos/logo3.jpg',
     logoStyle: {
       backgroundColor: '#60f5a1',
       background: 'linear-gradient(0deg, #60F5A150, #60F5A150), linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(208,213,221,0.8) 100%)',
@@ -133,18 +114,42 @@ export const myProjects = [
     },
     spotlight: '/assets/spotlight3.png',
     tags: [
-      { id: 1, name: 'Next.js',    path: '/assets/logos/nextjs.svg'      },
-      { id: 2, name: 'Node.js',    path: '/assets/logos/express.png'    },
-      { id: 3, name: 'MongoDB',    path: '/assets/logos/mongodb.png'    },
-      { id: 4, name: 'TypeScript', path: '/assets/logos/typescript.png' },
+      { id: 1, name: 'Next.js',     path: '/assets/logos/nextjs.svg'      },
+      { id: 2, name: 'Node.js',     path: '/assets/logos/nodejs.svg'      },
+      { id: 3, name: 'MongoDB',     path: '/assets/logos/mongodb.png'     },
+      { id: 4, name: 'TypeScript',  path: '/assets/logos/typescript.png'  },
+      { id: 5, name: 'Vercel',      path: '/assets/logos/vercel.svg'      },
     ],
   },
   {
-    title: 'Student Marksheet Management System',
+    title: 'Stayan — Tourism & Accommodation Platform',
+    desc: 'A full-stack tourism platform inspired by Airbnb for discovering and booking unique accommodations and experiences worldwide. Connect with local hosts and unlock unforgettable travel adventures.',
+    subdesc:
+      'Built with the MERN stack (MongoDB, Express, React, Node.js) featuring real-time search, host dashboards, and full booking management.',
+    href: 'https://stayan-private-limited.onrender.com/',
+    texture: '/textures/project/project1.mp4',
+    logo: '/assets/logos/project-logo1.png',
+    logoStyle: {
+      backgroundColor: '#2A1816',
+      border: '0.2px solid #36201D',
+      boxShadow: '0px 0px 60px 0px #AA3C304D',
+    },
+    spotlight: '/assets/spotlight1.png',
+    tags: [
+      { id: 1, name: 'React.js',    path: '/assets/logos/react.svg'       },
+      { id: 2, name: 'Node.js',     path: '/assets/logos/nodejs.svg'      },
+      { id: 3, name: 'Express.js',  path: '/assets/logos/express.png'     },
+      { id: 4, name: 'MongoDB',     path: '/assets/logos/mongodb.png'     },
+      { id: 5, name: 'Tailwind CSS',path: '/assets/logos/tailwindcss.png' },
+    ],
+  },
+  
+  {
+    title: 'Package Tracker Management System',
     desc: 'A role-based student marksheet management system with JWT authentication, delivering intuitive dashboards for students, teachers, and admins to manage and view marks.',
     subdesc:
       'Built with React, Node.js, Express, and MongoDB — clean MVC architecture with secure authentication and separate role views.',
-    href: 'https://github.com/Sayan8945',
+    href: 'https://student-management-frontend-taupe.vercel.app/',
     texture: '/textures/project/project4.mp4',
     logo: '/assets/logos/project-logo4.png',
     logoStyle: {
@@ -154,10 +159,11 @@ export const myProjects = [
     },
     spotlight: '/assets/spotlight4.png',
     tags: [
-      { id: 1, name: 'React.js', path: '/assets/logos/react.svg'   },
-      { id: 2, name: 'Node.js',  path: '/assets/logos/express.png' },
-      { id: 3, name: 'MongoDB',  path: '/assets/logos/mongodb.png' },
-      { id: 4, name: 'TailwindCSS', path: '/assets/logos/tailwindcss.png' },
+      { id: 1, name: 'React.js',    path: '/assets/logos/react.svg'       },
+      { id: 2, name: 'Node.js',     path: '/assets/logos/nodejs.svg'      },
+      { id: 3, name: 'Express.js',  path: '/assets/logos/express.png'     },
+      { id: 4, name: 'MongoDB',     path: '/assets/logos/mongodb.png'     },
+      { id: 5, name: 'JWT Auth',    path: '/assets/logos/jwt.svg'         },
     ],
   },
 ];

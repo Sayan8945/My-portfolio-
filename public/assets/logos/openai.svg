@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="ai-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10a37f"/>
+      <stop offset="100%" stop-color="#1a7f64"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#ai-grad)"/>
+  <!-- OpenAI-style interlocking ring mark (simplified) -->
+  <g fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round">
+    <!-- Outer ring segments -->
+    <path d="M50 18 A32 32 0 0 1 78 38"/>
+    <path d="M78 38 A32 32 0 0 1 72 70"/>
+    <path d="M72 70 A32 32 0 0 1 44 80"/>
+    <path d="M44 80 A32 32 0 0 1 22 62"/>
+    <path d="M22 62 A32 32 0 0 1 28 30"/>
+    <path d="M28 30 A32 32 0 0 1 50 18"/>
+    <!-- Inner star / spokes -->
+    <line x1="50" y1="22" x2="50" y2="38"/>
+    <line x1="74" y1="36" x2="62" y2="46"/>
+    <line x1="70" y1="67" x2="58" y2="57"/>
+    <line x1="50" y1="78" x2="50" y2="62"/>
+    <line x1="26" y1="64" x2="38" y2="54"/>
+    <line x1="30" y1="33" x2="42" y2="43"/>
+    <!-- Centre dot -->
+    <circle cx="50" cy="50" r="7" fill="white" stroke="none"/>
+  </g>
+</svg>
