@@ -80,7 +80,7 @@ export const myProjects = [
     desc: 'Mental health platform featuring AI-powered chatbots for emotional support, mood tracking, and real-time self-assessment tools, committed to privacy-first mental wellness.',
     subdesc:
       'Built with React, Node.js, Express, and MongoDB, integrating advanced AI models to deliver responsive user experiences and scalable solutions.',
-    href: 'https://mental-health-site-mocha.vercel.app/',
+    href: 'https://medibloom-mental-health-site-fronte.vercel.app/',
     texture: '/textures/project/project2.mp4',
     logo: '/assets/logos/project-logo2.png',
     logoStyle: {

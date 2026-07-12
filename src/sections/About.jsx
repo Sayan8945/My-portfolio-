@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
 import ResumeModal from '../components/ResumeModal.jsx';
 import GithubHeatmap from '../components/GithubHeatmap.jsx';
+import GithubPinnedRepos from '../components/GithubPinnedRepos.jsx';
 
 const About = () => {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -142,6 +143,26 @@ const About = () => {
           </div>
 
           <GithubHeatmap username="Sayan8945" />
+        </div>
+
+        {/* ---------- GitHub Pinned Repos ---------- */}
+        <div className="grid-container xl:col-span-3">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3">
+              <img src="/assets/logos/github.svg" alt="GitHub" className="w-6 h-6" />
+              <p className="grid-headtext mb-0">Pinned Repositories</p>
+            </div>
+            <a
+              className="flex items-center gap-2 cursor-pointer text-yellow-500"
+              href="https://github.com/Sayan8945?tab=repositories"
+              target="_blank"
+              rel="noreferrer">
+              <p>View All Repos</p>
+              <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
+            </a>
+          </div>
+
+          <GithubPinnedRepos username="Sayan8945" max={4} />
         </div>
 
       </div>
