@@ -9,15 +9,36 @@ import { useProgress } from '@react-three/drei';
  * reports progress for every GLTF/texture load in the app — no need to be
  * inside a <Canvas>. Once progress reaches 100%, we hold briefly for a smooth
  * fade-out instead of an abrupt cut, then unmount so it stops blocking clicks.
+ *
+ * Style: black terminal window with a typed code snippet + blinking cursor,
+ * using the yellow (#eab308) accent already used across the site.
  */
+const YELLOW = '#eab308';
+
+const CODE_LINES = [
+  { text: 'const developer = {', color: '#9CA3AF' },
+  { text: '  name: "Sayan Sarkar",', color: '#E4E4E6', indent: true },
+  { text: '  role: "Full Stack Developer",', color: '#E4E4E6', indent: true },
+  { text: '  stack: ["MERN", "Next.js"],', color: '#E4E4E6', indent: true },
+  { text: '};', color: '#9CA3AF' },
+  { text: '', color: '#9CA3AF' },
+  { text: 'portfolio.render(developer);', color: null }, // rendered with yellow highlight
+];
+
 const LoadingScreen = () => {
   const { progress, active } = useProgress();
   const [visible, setVisible] = useState(true);
   const [fadingOut, setFadingOut] = useState(false);
+  const [typedLines, setTypedLines] = useState(0);
+
+  // Type out the code lines one by one for a "coding" feel.
+  useEffect(() => {
+    if (typedLines >= CODE_LINES.length) return;
+    const timer = setTimeout(() => setTypedLines((n) => n + 1), 260);
+    return () => clearTimeout(timer);
+  }, [typedLines]);
 
   useEffect(() => {
-    // Once loading is done (progress hit 100 and nothing else is loading),
-    // wait a beat so the fade feels intentional, then remove from the DOM.
     if (progress >= 100 && !active) {
       const fadeTimer = setTimeout(() => setFadingOut(true), 300);
       const removeTimer = setTimeout(() => setVisible(false), 900);
@@ -51,63 +72,76 @@ const LoadingScreen = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center gap-6
+      className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center gap-6 px-4
                   transition-opacity duration-500 ease-out
                   ${fadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-      style={{
-        backgroundColor: '#010103',
-        backgroundImage:
-          'radial-gradient(circle at 20% 20%, rgba(124,58,237,0.14) 0%, rgba(1,1,3,0) 45%), ' +
-          'radial-gradient(circle at 80% 10%, rgba(34,211,238,0.10) 0%, rgba(1,1,3,0) 40%), ' +
-          'radial-gradient(circle at 50% 100%, rgba(236,72,153,0.08) 0%, rgba(1,1,3,0) 55%)',
-      }}
+      style={{ backgroundColor: '#010103' }}
       aria-live="polite"
       aria-busy={visible}>
 
-      {/* Brand mark */}
-      <div className="flex flex-col items-center gap-3">
-        <p
-          className="text-3xl sm:text-4xl font-generalsans font-black bg-gradient-to-r from-[#22D3EE] from-0% via-[#A78BFA] via-55% to-[#EC4899] to-100% bg-clip-text text-transparent"
-          style={{ letterSpacing: '0.02em' }}>
-          Sayan Sarkar
-        </p>
-        <p className="text-white-500 text-xs sm:text-sm tracking-[0.3em] uppercase">
-          Full Stack Developer
-        </p>
+      {/* Terminal window */}
+      <div
+        className="w-full max-w-md rounded-lg overflow-hidden"
+        style={{ backgroundColor: '#0E0E10', border: '1px solid #1C1C21' }}>
+
+        {/* Title bar */}
+        <div className="flex items-center gap-2 px-4 py-2.5" style={{ backgroundColor: '#1C1C21' }}>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#EC4899]" />
+          <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: YELLOW }} />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
+          <p className="ml-2 text-xs text-white-500 font-mono">portfolio.js</p>
+        </div>
+
+        {/* Code body */}
+        <div className="p-5 font-mono text-[13px] sm:text-sm leading-relaxed min-h-[190px]">
+          {CODE_LINES.slice(0, typedLines).map((line, i) => {
+            const isLast = i === typedLines - 1;
+            const isRenderCall = line.text.startsWith('portfolio.render');
+            return (
+              <div key={i} className="whitespace-pre">
+                {isRenderCall ? (
+                  <>
+                    <span style={{ color: YELLOW }}>portfolio</span>
+                    <span className="text-white-600">.</span>
+                    <span style={{ color: '#22D3EE' }}>render</span>
+                    <span className="text-white-600">(developer);</span>
+                  </>
+                ) : (
+                  <span style={{ color: line.color }}>{line.text || '\u00A0'}</span>
+                )}
+                {isLast && typedLines < CODE_LINES.length && (
+                  <span
+                    className="inline-block w-[7px] h-[14px] ml-0.5 align-middle"
+                    style={{ backgroundColor: YELLOW, animation: 'blink-cursor 0.9s step-end infinite' }}
+                  />
+                )}
+              </div>
+            );
+          })}
+          {typedLines >= CODE_LINES.length && (
+            <span
+              className="inline-block w-[7px] h-[14px] align-middle"
+              style={{ backgroundColor: YELLOW, animation: 'blink-cursor 0.9s step-end infinite' }}
+            />
+          )}
+        </div>
       </div>
 
       {/* Progress bar */}
-      <div className="w-56 sm:w-72 flex flex-col items-center gap-3">
-        <div className="w-full h-1.5 rounded-full overflow-hidden bg-white/10">
+      <div className="w-full max-w-md flex flex-col gap-2">
+        <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: '#1C1C21' }}>
           <div
             className="h-full rounded-full transition-[width] duration-200 ease-out"
-            style={{
-              width: `${displayProgress}%`,
-              background: 'linear-gradient(90deg, #22D3EE, #A78BFA, #EC4899)',
-            }}
+            style={{ width: `${displayProgress}%`, backgroundColor: YELLOW }}
           />
         </div>
-        <p className="text-white-600 text-xs font-mono">{displayProgress}%</p>
-      </div>
-
-      {/* Subtle pulsing dot loader */}
-      <div className="flex gap-1.5">
-        {[0, 1, 2].map((i) => (
-          <span
-            key={i}
-            className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]"
-            style={{
-              animation: 'loading-pulse 1.2s ease-in-out infinite',
-              animationDelay: `${i * 0.2}s`,
-            }}
-          />
-        ))}
+        <p className="text-white-500 text-xs font-mono self-end">Compiling… {displayProgress}%</p>
       </div>
 
       <style>{`
-        @keyframes loading-pulse {
-          0%, 80%, 100% { opacity: 0.25; transform: scale(0.85); }
-          40% { opacity: 1; transform: scale(1.15); }
+        @keyframes blink-cursor {
+          0%, 50% { opacity: 1; }
+          50.01%, 100% { opacity: 0; }
         }
       `}</style>
     </div>
