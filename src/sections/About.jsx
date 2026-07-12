@@ -96,7 +96,7 @@ const About = () => {
 
         {/* ---------- Passion for Coding ---------- */}
         <div className="grid-container xl:col-span-2 xl:min-h-[380px] min-h-[380px]">
-          <img src="assets/typingKeyboard.webp" alt="Coding" className="w-full h-[220px] object-contain" />
+          <img src="assets/typingKeyboard.webp" alt="Coding" className="w-full h-[220px] object-cover rounded-lg" />
           <div>
             <p className="grid-headtext">My Passion for Coding</p>
             <p className="grid-subtext">
