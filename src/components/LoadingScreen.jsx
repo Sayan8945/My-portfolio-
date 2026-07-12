@@ -55,11 +55,11 @@ const LoadingScreen = () => {
                   transition-opacity duration-500 ease-out
                   ${fadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
       style={{
-        backgroundColor: '#050310',
+        backgroundColor: '#010103',
         backgroundImage:
-          'radial-gradient(circle at 20% 20%, rgba(124,58,237,0.18) 0%, rgba(5,3,16,0) 45%), ' +
-          'radial-gradient(circle at 80% 10%, rgba(34,211,238,0.14) 0%, rgba(5,3,16,0) 40%), ' +
-          'radial-gradient(circle at 50% 100%, rgba(236,72,153,0.12) 0%, rgba(5,3,16,0) 55%)',
+          'radial-gradient(circle at 20% 20%, rgba(124,58,237,0.14) 0%, rgba(1,1,3,0) 45%), ' +
+          'radial-gradient(circle at 80% 10%, rgba(34,211,238,0.10) 0%, rgba(1,1,3,0) 40%), ' +
+          'radial-gradient(circle at 50% 100%, rgba(236,72,153,0.08) 0%, rgba(1,1,3,0) 55%)',
       }}
       aria-live="polite"
       aria-busy={visible}>
