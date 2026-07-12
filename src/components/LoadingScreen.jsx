@@ -14,6 +14,7 @@ import { useProgress } from '@react-three/drei';
  * using the yellow (#eab308) accent already used across the site.
  */
 const YELLOW = '#eab308';
+const MIN_DISPLAY_MS = 3800; // Loading screen always shows for at least 5s.
 
 const CODE_LINES = [
   { text: 'const developer = {', color: '#9CA3AF' },
@@ -30,6 +31,8 @@ const LoadingScreen = () => {
   const [visible, setVisible] = useState(true);
   const [fadingOut, setFadingOut] = useState(false);
   const [typedLines, setTypedLines] = useState(0);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   // Type out the code lines one by one for a "coding" feel.
   useEffect(() => {
@@ -38,8 +41,23 @@ const LoadingScreen = () => {
     return () => clearTimeout(timer);
   }, [typedLines]);
 
+  // Track when assets have actually finished loading.
   useEffect(() => {
     if (progress >= 100 && !active) {
+      setAssetsLoaded(true);
+    }
+  }, [progress, active]);
+
+  // Enforce a minimum display time so the loading screen doesn't flash by
+  // instantly on fast connections/localhost.
+  useEffect(() => {
+    const minTimer = setTimeout(() => setMinTimeElapsed(true), MIN_DISPLAY_MS);
+    return () => clearTimeout(minTimer);
+  }, []);
+
+  // Only fade out once BOTH the minimum time has elapsed AND assets are loaded.
+  useEffect(() => {
+    if (minTimeElapsed && assetsLoaded) {
       const fadeTimer = setTimeout(() => setFadingOut(true), 300);
       const removeTimer = setTimeout(() => setVisible(false), 900);
       return () => {
@@ -47,15 +65,15 @@ const LoadingScreen = () => {
         clearTimeout(removeTimer);
       };
     }
-  }, [progress, active]);
+  }, [minTimeElapsed, assetsLoaded]);
 
-  // Safety net: never block the site for more than 8s even if some asset
+  // Safety net: never block the site for more than 12s even if some asset
   // stalls (e.g. a slow/failed network request).
   useEffect(() => {
     const failSafe = setTimeout(() => {
       setFadingOut(true);
       setTimeout(() => setVisible(false), 600);
-    }, 8000);
+    }, 12000);
     return () => clearTimeout(failSafe);
   }, []);
 
