@@ -23,7 +23,13 @@ const About = () => {
 
         {/* ---------- Bio ---------- */}
         <div className="grid-container xl:min-h-[560px] min-h-[500px]">
-          <img src="assets/profile.jpeg" alt="Sayan Sarkar" className="w-full h-[240px] object-contain" />
+          <div className="w-full h-[240px] overflow-hidden rounded-lg">
+            <img
+              src="assets/profile.jpeg"
+              alt="Sayan Sarkar"
+              className="w-full h-full object-cover scale-105"
+            />
+          </div>
           <div>
             <p className="grid-headtext">Hi, I&apos;m Sayan Sarkar</p>
             <p className="grid-subtext">
@@ -63,11 +69,11 @@ const About = () => {
 
         {/* ---------- Globe / Location ---------- */}
         <div className="grid-container xl:min-h-[560px] min-h-[500px]">
-          <div className="w-full h-[240px] flex justify-center items-center overflow-hidden rounded-3xl">
+          <div className="w-full h-[280px] flex justify-center items-center overflow-hidden pt-2 sm:pt-3">
             <Globe
               ref={globeRef}
-              height={240}
-              width={240}
+              height={280}
+              width={320}
               backgroundColor="rgba(0, 0, 0, 0)"
               backgroundImageOpacity={1}
               globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
